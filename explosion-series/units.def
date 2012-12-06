@@ -1,0 +1,5 @@
+ball		pos:Position
+moving_ball	pos:Position	vel:Velocity
+falling_ball	pos:Position	Velocity=(0.0, -0.2)
+random_ball	Position=(rand_xy ())	Velocity=(rand_xy ())
+ball_defaults	?pos:Position=(0.0, 0.0)	?vel:Velocity=(0.0, 0.0)

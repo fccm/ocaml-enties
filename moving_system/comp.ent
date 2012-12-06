@@ -1,0 +1,4 @@
+Position    xy
+Velocity    xy
+Radius      float
+Color       rgb

@@ -1,0 +1,13 @@
+Position    xy
+Velocity    xy
+Radius      float
+Color       rgb
+Points      int
+Expand_size     float
+Expanded_time   float
+Expanded_birth  float
+Is_expanded
+Not_expanded
+Expanding
+Expanding_finished
+Unexpanding

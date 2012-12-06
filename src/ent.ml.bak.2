@@ -1,0 +1,459 @@
+(** Entity/Component oriented functions
+    for game/multimedia programming *)
+
+type id = int
+
+(** Entities *)
+
+external c2i : 'a -> int = "%identity"
+
+let cmp_comp a b = (c2i a) - (c2i b)
+
+let cmp_e a b = (a - b)
+
+let not_int p =
+  Obj.is_block (Obj.repr p)
+
+
+type ('component_type, 'component) entity =
+  {
+    id : id;
+    components : ('component_type, 'component) PMap.t;
+  }
+
+let new_entity () =
+  {
+    id = -1;
+    components = PMap.empty;
+  }
+
+
+let get_id_opt e =
+  if e.id < 0 then None
+  else Some e.id
+
+let get_id e =
+  if e.id < 0 then invalid_arg "get_id"
+  else e.id
+
+
+(** Components *)
+
+let has_component e comp_type =
+  PMap.mem comp_type cmp_comp e.components
+
+let has_components e comp_types =
+  List.for_all (has_component e) comp_types
+
+let has_any_component e comp_types =
+  List.exists (has_component e) comp_types
+
+let put_component e (comp_type, comp_data) =
+  { e with
+    components = PMap.add comp_type comp_data cmp_comp e.components;
+  }
+
+let add_component e (comp_type, comp_data) =
+  if not_int comp_type then invalid_arg "add_component: component_type";
+  if has_component e comp_type then
+    invalid_arg "add_component: already has component_type";
+  put_component e (comp_type, comp_data)
+
+let replace_component e comp_type new_val =
+  if not_int comp_type then invalid_arg "replace_component: component_type";
+  put_component e (comp_type, new_val)
+
+let get_component e comp_type =
+  PMap.find comp_type cmp_comp e.components
+
+let get_component_opt e comp_type =
+  PMap.find_opt comp_type cmp_comp e.components
+
+let remove_component e comp_type =
+  { e with
+    components = PMap.remove comp_type cmp_comp e.components;
+  }
+
+let iter_components e f =
+  PMap.iteri f e.components
+
+let get_components e =
+  PMap.keys e.components
+
+let cmp_components e comp_types =
+  let comp_types_in = List.sort cmp_comp comp_types in
+  let comp_types_e = PMap.keys e.components in
+  Pervasives.compare comp_types_in comp_types_e
+
+let components_match e comp_types =
+  (cmp_components e comp_types) = 0
+
+
+(** Mappers *)
+
+(** mappers tell if a system should be applied on an entity
+    by checking if the entity contains the needed set of components *)
+
+type 'comp_t mapper = {
+  comp_t : 'comp_t list;
+}
+
+let make_mapper comp_t =
+  { comp_t }
+
+let mapper_match e mapper =
+  has_components e mapper.comp_t
+
+
+(** System Labels *)
+
+(* makes it possible to apply some systems and not others *)
+
+type system_label = string
+type system_label_impl = int
+
+let labelise s =
+  Hashtbl.hash s
+
+let labelise_opt = function
+  | None -> -1
+  | Some s -> labelise s
+
+
+(** Systems *)
+
+type 'a update =
+  | Updated of 'a   (* the value of some components where updated *)
+  | Changed of 'a   (* some components were added and/or removed *)
+  | Unchanged       (* no components changed *)
+  | Removed         (* remove this entity *)
+
+
+type ('a, 'b, 'delta, 'fld) world = {
+  id_counter : int;
+  entities : (id, ('a, 'b) entity) PMap.t;
+  system_managers : ('a, 'b, 'delta, 'fld) system_manager list;
+}
+
+and ('a, 'b, 'delta, 'fld) system_manager = {
+  system : ('a, 'b, 'delta, 'fld) system_kind;
+  mapper : 'a mapper;
+  label : system_label_impl;
+}
+
+and ('a, 'b, 'delta, 'fld) system_kind =
+  | System of ('a, 'b, 'delta, 'fld) system
+  | Fld_system of ('a, 'b, 'delta, 'fld) foldable_system
+
+and ('a, 'b, 'delta, 'fld) system =
+  ('a, 'b) entity ->
+  ('a, 'b, 'delta, 'fld) world ->
+  'delta ->
+      ('a, 'b) entity update *
+      ('a, 'b) entity list
+
+and ('a, 'b, 'delta, 'fld) foldable_system =
+  ('a, 'b) entity ->
+  ('a, 'b, 'delta, 'fld) world ->
+  'delta ->
+  'fld ->
+      ('a, 'b) entity update *
+      ('a, 'b) entity list *
+      'fld
+
+
+let add_foldable_system w mapper ?label system =
+  let label = labelise_opt label in
+  let system = Fld_system system in
+  { w with
+    system_managers = { mapper; label; system } :: w.system_managers
+  }
+
+let add_system w mapper ?label system =
+  let label = labelise_opt label in
+  let system = System system in
+  { w with
+    system_managers = { mapper; label; system } :: w.system_managers
+  }
+
+let add_systems w systems =
+  List.fold_left (fun w (mapper, label, system) ->
+    add_system w mapper ?label system
+  ) w systems
+
+let add_foldable_systems w systems =
+  List.fold_left (fun w (mapper, label, system) ->
+    add_foldable_system w mapper ?label system
+  ) w systems
+
+
+(** World *)
+
+let new_world () =
+  {
+    id_counter = 0;
+    entities = PMap.empty;
+    system_managers = [];
+  }
+
+
+let add_entity w e =
+  if e.id <> -1 then invalid_arg "add_entity";
+  let id = w.id_counter in
+  let e = { e with id } in
+  { w with
+    id_counter = w.id_counter + 1;
+    entities = PMap.add id e cmp_e w.entities;
+  }
+
+
+let add_entity_id w e =
+  if e.id <> -1 then invalid_arg "add_entity_id";
+  let id = w.id_counter in
+  let e = { e with id } in
+  { w with
+    id_counter = w.id_counter + 1;
+    entities = PMap.add id e cmp_e w.entities;
+  }, id
+
+
+let remove_entity w e =
+  { w with
+    entities = PMap.remove e.id cmp_e w.entities;
+  }
+
+let remove_entity_id w id =
+  { w with
+    entities = PMap.remove id cmp_e w.entities;
+  }
+
+
+let get_entity w id =
+  PMap.find id cmp_e w.entities
+
+let get_entity_opt w id =
+  PMap.find_opt id cmp_e w.entities
+
+let num_entities w =
+  PMap.cardinal w.entities
+
+let has_entity w id =
+  PMap.mem id cmp_e w.entities
+
+let iter_entities f w =
+  PMap.iter f w.entities
+
+let fold_entities f w acc =
+  PMap.fold f w.entities acc
+
+let add_entities w es =
+  List.fold_left add_entity w es
+
+let add_entities_ar w er =
+  Array.fold_left add_entity w er
+
+let add_entities_init ~w ~n ~f =
+  let er = Array.init n f in
+  add_entities_ar w er
+
+let _add_entities_id w es =
+  List.fold_left (fun (w, acc) e ->
+    let w, id = add_entity_id w e in
+    (w, id::acc)
+  ) (w, []) es
+
+let add_entities_id w es =
+  let w, ids = _add_entities_id w es in
+  (w, List.rev ids)
+
+let add_entities_id_ar w er =
+  let n = Array.length er in
+  let ids = Array.make n (-1) in
+  let wr = ref w in
+  for i = 0 to n - 1 do
+    let e = Array.unsafe_get er i in
+    let w, id = add_entity_id !wr e in
+    wr := w;
+    Array.unsafe_set ids i id;
+  done;
+  (!wr, ids)
+
+
+let _replace_entity w id e =
+  { w with
+    entities = PMap.add id e cmp_e w.entities;
+  }
+
+let replace_entity w id e =
+  if not (has_entity w id) then invalid_arg "replace_entity";
+  if e.id <> id then invalid_arg "replace_entity";
+  _replace_entity w id e
+
+
+let num_entities_with_components w comp_types =
+  fold_entities (fun e n ->
+    if has_components e comp_types then n + 1 else n
+  ) w 0
+
+let get_entities_with_components w comp_types =
+  fold_entities (fun e acc ->
+    if has_components e comp_types then e::acc else acc
+  ) w []
+
+let get_entities w ids =
+  List.fold_left (fun acc id ->
+    match get_entity_opt w id with
+    | Some e -> e :: acc
+    | None -> acc
+  ) [] (List.rev ids)
+
+let do_get_entities w ids =
+  List.fold_left (fun acc id ->
+    let e = get_entity w id in
+    (e :: acc)
+  ) [] (List.rev ids)
+
+
+(* the heart beat is here *)
+
+type ('comp_t, 'comp, 'delta, 'fld) born_feedback_func =
+  ('comp_t, 'comp, 'delta, 'fld) world ->
+  ('comp_t, 'comp) entity ->
+  id list ->
+  'fld ->
+  ('comp_t, 'comp, 'delta, 'fld) world * 'fld
+
+
+let tuple3 (a, b) c = (a, b, c)
+
+
+let world_step_fold_0 w ?labels ?fb delta acc =
+  let sys_mgr_lst =
+    match labels with
+    | None -> w.system_managers
+    | Some labels ->
+        let labels = List.map labelise labels in
+        List.filter (fun sys_mgr ->
+          List.mem sys_mgr.label labels
+        ) w.system_managers
+  in
+  PMap.foldi
+    (fun id e wes ->
+      List.fold_left
+        (fun ((next_w, acc) as wes) sys_mgr ->
+          if not (mapper_match e sys_mgr.mapper) then wes else
+          let next_e, born, acc =
+            match sys_mgr.system with
+            | System system -> tuple3 (system e w delta) acc
+            | Fld_system fld_system -> fld_system e w delta acc
+          in
+          let next_w = add_entities next_w born in
+          match next_e with
+          | Unchanged -> (next_w, acc)
+          | Removed -> (remove_entity next_w e, acc)
+          | Changed e -> (replace_entity next_w id e, acc)
+          | Updated e -> (replace_entity next_w id e, acc)
+        )
+        wes
+        sys_mgr_lst
+    )
+    w.entities
+    (w, acc)
+
+
+
+let world_step_fold_1 w ?labels ?fb delta acc =
+  let sys_mgr_lst =
+    match labels with
+    | None -> w.system_managers
+    | Some labels ->
+        let labels = List.map labelise labels in
+        List.filter (fun sys_mgr ->
+          List.mem sys_mgr.label labels
+        ) w.system_managers
+  in
+  PMap.foldi
+    (fun id e wes ->
+      List.fold_left
+        (fun ((next_w, acc) as wes) sys_mgr ->
+          if not (mapper_match e sys_mgr.mapper) then wes else
+          let next_e, born, acc =
+            match sys_mgr.system with
+            | System system -> tuple3 (system e w delta) acc
+            | Fld_system fld_system -> fld_system e w delta acc
+          in
+          let next_w, acc =
+            match fb with
+            | None ->
+                (add_entities next_w born, acc)
+            | Some feedback ->
+                let w, ids = add_entities_id next_w born in
+                feedback w e ids acc
+          in
+          match next_e with
+          | Unchanged -> (next_w, acc)
+          | Removed -> (remove_entity next_w e, acc)
+          | Changed e -> (replace_entity next_w id e, acc)
+          | Updated e -> (replace_entity next_w id e, acc)
+        )
+        wes
+        sys_mgr_lst
+    )
+    w.entities
+    (w, acc)
+
+
+
+let world_step_fold_2 w ?labels ?fb delta acc =
+  let sys_mgr_lst =
+    match labels with
+    | None -> w.system_managers
+    | Some labels ->
+        let labels = List.map labelise labels in
+        List.filter (fun sys_mgr ->
+          List.mem sys_mgr.label labels
+        ) w.system_managers
+  in
+  let next_w, acc, born =
+    PMap.foldi
+      (fun id e wes ->
+        List.fold_left
+          (fun ((next_w, acc, born) as wes) sys_mgr ->
+            if not (mapper_match e sys_mgr.mapper) then wes else
+            let next_e, be, acc =
+              match sys_mgr.system with
+              | System system -> tuple3 (system e w delta) acc
+              | Fld_system fld_system -> fld_system e w delta acc
+            in
+            let born = (e, be) :: born in
+            match next_e with
+            | Unchanged -> (next_w, acc, born)
+            | Removed -> (remove_entity next_w e, acc, born)
+            | Changed e -> (replace_entity next_w id e, acc, born)
+            | Updated e -> (replace_entity next_w id e, acc, born)
+          )
+          wes
+          sys_mgr_lst
+      )
+      w.entities
+      (w, acc, [])
+  in
+  match fb with
+  | None ->
+      List.fold_left (fun next_w (e, be) ->
+        add_entities next_w be
+      ) (next_w) born,
+      acc
+  | Some feedback ->
+      List.fold_left (fun (next_w, acc) (e, be) ->
+        let w, ids = add_entities_id next_w be in
+        feedback w e ids acc
+      ) (next_w, acc) born
+
+
+let world_step_fold = world_step_fold_0 ;;
+
+
+let world_step w ?labels ?fb delta =
+  let w, () = world_step_fold w ?labels ?fb delta () in
+  (w)

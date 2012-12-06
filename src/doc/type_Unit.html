@@ -1,0 +1,68 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Ent" rel="Chapter" href="Ent.html">
+<link title="CEnt" rel="Chapter" href="CEnt.html">
+<link title="UEnt" rel="Chapter" href="UEnt.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="Unit" rel="Chapter" href="Unit.html"><title>Unit</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_omicron&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;omicron_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_omicron&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_omicron_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_sigma&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;sigma_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_sigma&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_sigma_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_upsilon&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;upsilon_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_upsilon&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_upsilon_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_iota&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;iota_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_iota&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_iota_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_mu&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;mu_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_mu&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_mu_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_theta&nbsp;:&nbsp;a:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;theta_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_theta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_theta_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_omega&nbsp;:&nbsp;a:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;b:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;omega_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_omega&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_omega_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_aleph&nbsp;:&nbsp;a:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;aleph_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_aleph&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_aleph_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_yod&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;yod_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_yod&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_yod_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_ayin&nbsp;:&nbsp;?a:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ayin_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_ayin&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_ayin_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_phi&nbsp;:&nbsp;?a:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;b:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;phi_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_phi&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_phi_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_chi&nbsp;:&nbsp;?a:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;chi_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_chi&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_chi_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make_psi&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?e:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;psi_comps&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_psi&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_psi_strict&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+<span class="keyword">end</span></code></body></html>

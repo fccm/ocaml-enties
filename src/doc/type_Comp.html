@@ -1,0 +1,74 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Ent" rel="Chapter" href="Ent.html">
+<link title="CEnt" rel="Chapter" href="CEnt.html">
+<link title="UEnt" rel="Chapter" href="UEnt.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="Unit" rel="Chapter" href="Unit.html"><title>Comp</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;component_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Alpha_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Beta_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Gamma_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Delta_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Epsilon_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Zeta_t</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;component&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Alpha</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Beta</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Gamma</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Delta</span>&nbsp;<span class="keyword">of</span>&nbsp;char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Epsilon</span>&nbsp;<span class="keyword">of</span>&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Zeta</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;entity&nbsp;=&nbsp;(<span class="constructor">Comp</span>.component_type,&nbsp;<span class="constructor">Comp</span>.component)&nbsp;<span class="constructor">Ent</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;world&nbsp;=&nbsp;(<span class="constructor">Comp</span>.component_type,&nbsp;<span class="constructor">Comp</span>.component)&nbsp;<span class="constructor">Ent</span>.world<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_alpha&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_beta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_gamma&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_delta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_epsilon&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_zeta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_alpha&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_beta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_gamma&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_delta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;char<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_epsilon&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_alpha_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_beta_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_gamma_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_delta_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;char&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_epsilon_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_alpha_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_beta_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_gamma_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_delta_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;char<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_epsilon_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_alpha&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_beta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_gamma&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_delta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_epsilon&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_zeta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_alpha&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_beta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_gamma&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_delta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_epsilon&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_zeta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_alpha&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_beta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_gamma&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_delta&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;char&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_epsilon&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_component_type&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_component&nbsp;:&nbsp;<span class="constructor">Comp</span>.component&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;print_entity&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;print_entities&nbsp;:&nbsp;<span class="constructor">Comp</span>.world&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+<span class="keyword">end</span></code></body></html>

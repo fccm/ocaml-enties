@@ -1,0 +1,124 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Vars" rel="Chapter" href="Vars.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="State" rel="Chapter" href="State.html">
+<link title="App" rel="Chapter" href="App.html">
+<link title="View" rel="Chapter" href="View.html">
+<link title="Control" rel="Chapter" href="Control.html"><title>Comp</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;xy&nbsp;=&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;rgb&nbsp;=&nbsp;float&nbsp;*&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;component_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Position_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Velocity_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Radius_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Color_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Points_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expand_size_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expanded_time_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expanded_birth_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Is_expanded_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Not_expanded_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expanding_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expanding_finished_t</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Unexpanding_t</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;component&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Position</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Comp</span>.xy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Velocity</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Comp</span>.xy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Radius</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Color</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Comp</span>.rgb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Points</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expand_size</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expanded_time</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expanded_birth</span>&nbsp;<span class="keyword">of</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Is_expanded</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Not_expanded</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expanding</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Expanding_finished</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Unexpanding</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;entity&nbsp;=&nbsp;(<span class="constructor">Comp</span>.component_type,&nbsp;<span class="constructor">Comp</span>.component)&nbsp;<span class="constructor">Ent</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;world&nbsp;=&nbsp;(<span class="constructor">Comp</span>.component_type,&nbsp;<span class="constructor">Comp</span>.component)&nbsp;<span class="constructor">Ent</span>.world<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_position&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_velocity&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_radius&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_color&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.rgb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_points&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_expand_size&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_expanded_time&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_expanded_birth&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_is_expanded&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_not_expanded&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_expanding&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_expanding_finished&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_unexpanding&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_position&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_velocity&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_radius&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_color&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.rgb<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_points&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expand_size&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expanded_time&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expanded_birth&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_position_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_velocity_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_radius_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_color_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.rgb&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_points_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expand_size_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expanded_time_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expanded_birth_opt&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_position_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_velocity_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_radius_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_color_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.rgb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.rgb<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_points_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expand_size_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expanded_time_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_expanded_birth_default&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_position&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_velocity&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_radius&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_color&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_points&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_expand_size&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_expanded_time&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_expanded_birth&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_is_expanded&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_not_expanded&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_expanding&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_expanding_finished&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_unexpanding&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_position&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_velocity&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_radius&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_color&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_points&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_expand_size&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_expanded_time&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_expanded_birth&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_is_expanded&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_not_expanded&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_expanding&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_expanding_finished&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remove_unexpanding&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_position&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_velocity&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_radius&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_color&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.rgb&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_points&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_expand_size&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_expanded_time&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_expanded_birth&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.entity<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_component_type&nbsp;:&nbsp;<span class="constructor">Comp</span>.component_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_component&nbsp;:&nbsp;<span class="constructor">Comp</span>.component&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;print_entity&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;print_entities&nbsp;:&nbsp;<span class="constructor">Comp</span>.world&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+<span class="keyword">end</span></code></body></html>

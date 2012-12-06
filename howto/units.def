@@ -1,0 +1,6 @@
+my_item		Position	Velocity
+item		pos:Position
+moving_item	pos:Position	vel:Velocity
+falling_item	pos:Position	Velocity=(0.0, -0.2)
+random_item	Position=(rand_xy ())	Velocity=(rand_xy ())
+item_defaults	?pos:Position=(0.0, 0.0)	?vel:Velocity=(0.0, 0.0)

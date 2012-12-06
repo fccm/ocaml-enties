@@ -1,0 +1,2 @@
+type xy = float * float
+

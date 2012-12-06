@@ -1,0 +1,50 @@
+.keyword { font-weight:bold; color:#09D; }
+.keywordsign { color:#C04600; }
+.superscript { font-size:4; }
+.subscript { font-size:4; }
+.comment { color:Green; }
+.constructor { color:Blue; }
+.type { color:#8C95B5; }
+.string { color:Maroon; }
+.warning { color:Red; font-weight:bold; }
+.info { margin-left:2.0em; margin-right:3em; }
+.param_info { margin-top:4px; margin-left:3em; margin-right:3em; }
+.code { color:#86BFFF; }
+.typetable { border-style:hidden; }
+.paramstable { border-style:hidden; padding:5pt 5pt}
+pre span { color:#FF7000; }
+tr { }
+td.typefieldcomment { background-color:#224; font-size:smaller;}
+div.sig_block { margin-left:2em; }
+*:target { background:Maroon; }
+body { font:13px sans-serif; color:#EEE; background:#223;
+ text-align:left; padding:5px; margin:0 16% 6em 2em; }
+pre.codepre code.code { background:#226; }
+pre.codepre { background:#226;
+ border:1px solid #24B;
+ padding:0.2em 0.4em; margin-right: 20%; }
+h1, h2, h3, h4, h5, h6, div.h7, div.h8 { color:#000;
+ font-size:20pt; text-align:center;
+ margin-top:1.2em; margin-bottom:0.1em; padding:2px 0.8em; }
+h2 { border:1px solid #000000; background-color:#78B0EF; }
+h3 { border:1px solid #000000; background-color:#78D0EF; }
+h4 { border:1px solid #000000; background-color:#78E0EF; }
+h5 { border:1px solid #000000; background-color:#78F0EF; }
+h6 { border:1px solid #000000; background-color:#78B0EF; }
+div.h7 { border:1px solid #000000; background-color:#E0FFFF; }
+div.h8 { border:1px solid #000000; background-color:#F0FFFF; }
+div.h9 { border:1px solid #000000; background-color:#FFFFFF; }
+a { color:#419DFF; text-decoration:none; }
+a:hover { background-color:#419DFF; color:#224; }
+pre { margin-bottom:6px; margin-left:0.5em; font-family:monospace; }
+pre.verbatim, pre.codepre { }
+.indextable { border:1px #68D solid; border-collapse:collapse; }
+.indextable td, .indextable th { border:1px #68D solid; min-width:90px; }
+.indextable td.module { background-color:#8BF;  padding-left:2px; padding-right:2px; }
+.indextable td.module a { color:#002; font-weight:bold; text-decoration:none; display:block; width:100%; }
+.indextable td.module a:hover { background-color:transparent; }
+.indextable tr td div.info { margin-left:2px; margin-right:2px;
+ color:#28F; background-color:#004; }
+.deprecated { color:#B64; background-color:#000; font-style:italic; }
+ul.indexlist { margin-left:0; padding-left:0;}
+ul.indexlist li { list-style-type:none ; margin-left:0; padding-left:0; }

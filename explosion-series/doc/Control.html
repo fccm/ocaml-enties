@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="View.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Vars" rel="Chapter" href="Vars.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="State" rel="Chapter" href="State.html">
+<link title="App" rel="Chapter" href="App.html">
+<link title="View" rel="Chapter" href="View.html">
+<link title="Control" rel="Chapter" href="Control.html"><title>Control</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="View.html" title="View">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Control.html">Control</a></h1>
+<pre><span class="keyword">module</span> Control: <code class="code">sig</code> <a href="Control.html">..</a> <code class="code">end</code></pre><div class="info">
+User Input<br>
+</div>
+<hr width="100%">
+<pre><span id="VALmouse"><span class="keyword">val</span> mouse</span> : <code class="type"><a href="View.html#TYPEt">View.t</a> -><br>       t:float -><br>       id:int -><br>       button:Windowing.mouse_button -><br>       state:Windowing.switch_state -> x:int -> y:int -> <a href="View.html#TYPEt">View.t</a></code></pre><pre><span id="VALkeyboard"><span class="keyword">val</span> keyboard</span> : <code class="type"><a href="View.html#TYPEt">View.t</a> -><br>       t:float -><br>       key:Windowing.key -><br>       state:Windowing.switch_state -> ctrl:bool -> alt:bool -> shift:bool -> <a href="View.html#TYPEt">View.t</a></code></pre><pre><span id="VALpaused"><span class="keyword">val</span> paused</span> : <code class="type"><a href="View.html#TYPEt">View.t</a> -> bool</code></pre><pre><span id="VALcontinue"><span class="keyword">val</span> continue</span> : <code class="type"><a href="View.html#TYPEt">View.t</a> -> t:float -> bool</code></pre></body></html>

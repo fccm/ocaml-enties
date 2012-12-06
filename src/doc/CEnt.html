@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Ent.html">
+<link rel="next" href="UEnt.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Ent" rel="Chapter" href="Ent.html">
+<link title="CEnt" rel="Chapter" href="CEnt.html">
+<link title="UEnt" rel="Chapter" href="UEnt.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="Unit" rel="Chapter" href="Unit.html"><link title="Entities" rel="Section" href="#3_Entities">
+<link title="Components" rel="Section" href="#3_Components">
+<link title="Constructors / Accessors / Modifiers" rel="Section" href="#3_ConstructorsAccessorsModifiers">
+<link title="World" rel="Section" href="#3_World">
+<link title="World Getters" rel="Section" href="#3_WorldGetters">
+<link title="World Iterators" rel="Section" href="#3_WorldIterators">
+<link title="Mappers" rel="Section" href="#3_Mappers">
+<link title="Systems" rel="Section" href="#3_Systems">
+<link title="Foldable Systems" rel="Section" href="#3_FoldableSystems">
+<link title="World Step" rel="Section" href="#3_WorldStep">
+<title>CEnt</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Ent.html" title="Ent">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="UEnt.html" title="UEnt">Next</a>
+</div>
+<h1>Module <a href="type_CEnt.html">CEnt</a></h1>
+<pre><span class="keyword">module</span> CEnt: <code class="code">sig</code> <a href="CEnt.html">..</a> <code class="code">end</code></pre><div class="info">
+Entity/Component Oriented Game/Multimedia Module<br>
+</div>
+<hr width="100%">
+<br>
+<b>Note:</b> This is an <i>experimentation</i>, not a final work.<br>
+<br>
+<h3 id="3_Entities">Entities</h3><br>
+<pre><span id="TYPEid"><span class="keyword">type</span> <code class="type"></code>id</span> = <code class="type"><a href="Ent.html#TYPEid">Ent.id</a></code> </pre>
+<div class="info">
+id of an entity, entities have an id only after been added to the world<br>
+</div>
+
+<pre><span id="TYPEentity"><span class="keyword">type</span> <code class="type"></code>entity</span> = <code class="type"><a href="Comp.html#TYPEentity">Comp.entity</a></code> </pre>
+<div class="info">
+this is the base type of the <code class="code">entity / component</code> concept<br>
+</div>
+
+<pre><span id="VALnew_entity"><span class="keyword">val</span> new_entity</span> : <code class="type">unit -> <a href="CEnt.html#TYPEentity">entity</a></code></pre><div class="info">
+generic game element<br>
+</div>
+<pre><span id="VALget_id"><span class="keyword">val</span> get_id</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> <a href="CEnt.html#TYPEid">id</a></code></pre><div class="info">
+raises an exception if the entity has not been added to the world<br>
+</div>
+<pre><span id="VALget_id_opt"><span class="keyword">val</span> get_id_opt</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> <a href="CEnt.html#TYPEid">id</a> option</code></pre><div class="info">
+same than <code class="code">get_id</code> but returns None instead of raising an exception<br>
+</div>
+<br>
+<h3 id="3_Components">Components</h3><br>
+<br>
+A component handles a property / attribute of an entity.
+<p>
+
+    An entity may have as many components as needed, but only
+    one component of each type.<br>
+<pre><span id="VALhas_component"><span class="keyword">val</span> has_component</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> -> bool</code></pre><pre><span id="VALhas_components"><span class="keyword">val</span> has_components</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> list -> bool</code></pre><div class="info">
+retruns true if the entity contains all the given component types
+<p>
+
+    (this function does not tell if the entity contains other components
+    or not)<br>
+</div>
+<pre><span id="VALhas_any_component"><span class="keyword">val</span> has_any_component</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> list -> bool</code></pre><div class="info">
+returns true if the entity contains at least one of the given component
+    types<br>
+</div>
+<pre><span id="VALiter_components"><span class="keyword">val</span> iter_components</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> (<a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> -> <a href="Comp.html#TYPEcomponent">Comp.component</a> -> unit) -> unit</code></pre><pre><span id="VALget_components"><span class="keyword">val</span> get_components</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> list</code></pre><pre><span id="VALcmp_components"><span class="keyword">val</span> cmp_components</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> list -> int</code></pre><pre><span id="VALcomponents_match"><span class="keyword">val</span> components_match</span> : <code class="type"><a href="CEnt.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> list -> bool</code></pre><br>
+<h3 id="3_ConstructorsAccessorsModifiers">Constructors / Accessors / Modifiers</h3><br>
+<br>
+The constructors, accessors and modifiers are in the module <code class="code">Comp</code>,
+  which have been generated (from the type definition of <code class="code">component</code>)
+  with the <code class="code">gen_comp</code> command line tool.<br>
+<br>
+<h3 id="3_World">World</h3><br>
+<pre><span id="TYPEworld"><span class="keyword">type</span> <code class="type"></code>world</span> = <code class="type"><a href="Comp.html#TYPEworld">Comp.world</a></code> </pre>
+<div class="info">
+for the <code class="code">'delta</code> type parameter see the doc of the function <code class="code">world_step</code>
+<p>
+
+  and see <code class="code">world_step_fold</code> about the <code class="code">'fld</code> type<br>
+</div>
+
+<pre><span id="VALnew_world"><span class="keyword">val</span> new_world</span> : <code class="type">unit -> <a href="CEnt.html#TYPEworld">world</a></code></pre><pre><span id="VALadd_entity"><span class="keyword">val</span> add_entity</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEentity">entity</a> -> <a href="CEnt.html#TYPEworld">world</a></code></pre><pre><span id="VALadd_entities"><span class="keyword">val</span> add_entities</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEentity">entity</a> list -> <a href="CEnt.html#TYPEworld">world</a></code></pre><pre><span id="VALadd_entity_id"><span class="keyword">val</span> add_entity_id</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEentity">entity</a> -> <a href="CEnt.html#TYPEworld">world</a> * <a href="CEnt.html#TYPEid">id</a></code></pre><div class="info">
+same than <code class="code">add_entity</code> but also return the id that was given to this entity<br>
+</div>
+<pre><span id="VALadd_entities_id"><span class="keyword">val</span> add_entities_id</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEentity">entity</a> list -> <a href="CEnt.html#TYPEworld">world</a> * <a href="CEnt.html#TYPEid">id</a> list</code></pre><pre><span id="VALadd_entities_init"><span class="keyword">val</span> add_entities_init</span> : <code class="type">w:<a href="CEnt.html#TYPEworld">world</a> -> n:int -> f:(int -> <a href="CEnt.html#TYPEentity">entity</a>) -> <a href="CEnt.html#TYPEworld">world</a></code></pre><pre><span id="VALhas_entity"><span class="keyword">val</span> has_entity</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEid">id</a> -> bool</code></pre><div class="info">
+does an entity exists with the given <code class="code">id</code><br>
+</div>
+<pre><span id="VALreplace_entity"><span class="keyword">val</span> replace_entity</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEid">id</a> -> <a href="CEnt.html#TYPEentity">entity</a> -> <a href="CEnt.html#TYPEworld">world</a></code></pre><pre><span id="VALremove_entity"><span class="keyword">val</span> remove_entity</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEentity">entity</a> -> <a href="CEnt.html#TYPEworld">world</a></code></pre><pre><span id="VALremove_entity_id"><span class="keyword">val</span> remove_entity_id</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEid">id</a> -> <a href="CEnt.html#TYPEworld">world</a></code></pre><br>
+<h3 id="3_WorldGetters">World Getters</h3><br>
+<pre><span id="VALget_entity"><span class="keyword">val</span> get_entity</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEid">id</a> -> <a href="CEnt.html#TYPEentity">entity</a></code></pre><pre><span id="VALget_entity_opt"><span class="keyword">val</span> get_entity_opt</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEid">id</a> -> <a href="CEnt.html#TYPEentity">entity</a> option</code></pre><div class="info">
+get an entity by its id<br>
+</div>
+<pre><span id="VALget_entities"><span class="keyword">val</span> get_entities</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEid">id</a> list -> <a href="CEnt.html#TYPEentity">entity</a> list</code></pre><div class="info">
+ids not found are just skipped<br>
+</div>
+<pre><span id="VALdo_get_entities"><span class="keyword">val</span> do_get_entities</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="CEnt.html#TYPEid">id</a> list -> <a href="CEnt.html#TYPEentity">entity</a> list</code></pre><div class="info">
+raises <code class="code">Not_found</code> if an id is not found<br>
+</div>
+<pre><span id="VALget_entities_with_components"><span class="keyword">val</span> get_entities_with_components</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> list -> <a href="CEnt.html#TYPEentity">entity</a> list</code></pre><br>
+<h3 id="3_WorldIterators">World Iterators</h3><br>
+<pre><span id="VALiter_entities"><span class="keyword">val</span> iter_entities</span> : <code class="type">(<a href="CEnt.html#TYPEentity">entity</a> -> unit) -> <a href="CEnt.html#TYPEworld">world</a> -> unit</code></pre><pre><span id="VALfold_entities"><span class="keyword">val</span> fold_entities</span> : <code class="type">(<a href="CEnt.html#TYPEentity">entity</a> -> 'p -> 'p) -> <a href="CEnt.html#TYPEworld">world</a> -> 'p -> 'p</code></pre><pre><span id="VALnum_entities"><span class="keyword">val</span> num_entities</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> int</code></pre><pre><span id="VALnum_entities_with_components"><span class="keyword">val</span> num_entities_with_components</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> list -> int</code></pre><br>
+<h3 id="3_Mappers">Mappers</h3><br>
+<br>
+a system will be only applied to the entities that contain
+    all the component types of the associated mapper<br>
+<pre><span id="TYPEmapper"><span class="keyword">type</span> <code class="type"></code>mapper</span> = <code class="type"><a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> <a href="Ent.html#TYPEmapper">Ent.mapper</a></code> </pre>
+
+<pre><span id="VALadd_mapper"><span class="keyword">val</span> add_mapper</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> <a href="Comp.html#TYPEcomponent_type">Comp.component_type</a> list -> <a href="CEnt.html#TYPEworld">world</a> * <a href="CEnt.html#TYPEmapper">mapper</a></code></pre><br>
+<h3 id="3_Systems">Systems</h3><br>
+<br>
+A <code class="code">system</code> may update or remove entities, or create new ones, each time
+    <code class="code">world_step</code> is called.<br>
+<pre><span id="TYPEupdate"><span class="keyword">type</span> <code class="type">'a</code> update</span> = <code class="type">'a <a href="Ent.html#TYPEupdate">Ent.update</a></code> </pre>
+
+<pre><span id="TYPEsystem"><span class="keyword">type</span> <code class="type">'delta</code> system</span> = <code class="type">(<a href="Comp.html#TYPEcomponent_type">Comp.component_type</a>, <a href="Comp.html#TYPEcomponent">Comp.component</a>, 'delta) <a href="Ent.html#TYPEsystem">Ent.system</a></code> </pre>
+<div class="info">
+the first returned value should be the input entity with eventual changes
+    and the second returned value is eventual new entities that should be added
+    to the world<br>
+</div>
+
+<br>
+<h3 id="3_FoldableSystems">Foldable Systems</h3><br>
+<pre><span id="TYPEfoldable_system"><span class="keyword">type</span> <code class="type">('delta, 'fld)</code> foldable_system</span> = <code class="type">(<a href="Comp.html#TYPEcomponent_type">Comp.component_type</a>, <a href="Comp.html#TYPEcomponent">Comp.component</a>, 'delta, 'fld) <a href="Ent.html#TYPEfoldable_system">Ent.foldable_system</a></code> </pre>
+<div class="info">
+similar than <code class="code">system</code> but a <code class="code">foldable_system</code> has an additional folded
+    parameter that can be given with <code class="code">world_step_fold</code><br>
+</div>
+
+<br>
+<h3 id="3_WorldStep">World Step</h3><br>
+<br>
+the heart beats here<br>
+<pre><span id="TYPEborn_feedback_func"><span class="keyword">type</span> <code class="type">'fld</code> born_feedback_func</span> = <code class="type">(<a href="Comp.html#TYPEcomponent_type">Comp.component_type</a>, <a href="Comp.html#TYPEcomponent">Comp.component</a>, 'fld) <a href="Ent.html#TYPEborn_feedback_func">Ent.born_feedback_func</a></code> </pre>
+
+<pre><span id="VALworld_step"><span class="keyword">val</span> world_step</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -> 'delta <a href="CEnt.html#TYPEsystem">system</a> -> <a href="CEnt.html#TYPEmapper">mapper</a> -> 'delta -> <a href="CEnt.html#TYPEworld">world</a></code></pre><div class="info">
+<code class="code">'delta</code> is the input parameter that is given to the systems<br>
+</div>
+<pre><span id="VALworld_step_fold"><span class="keyword">val</span> world_step_fold</span> : <code class="type"><a href="CEnt.html#TYPEworld">world</a> -><br>       ('delta, 'fld) <a href="CEnt.html#TYPEfoldable_system">foldable_system</a> -><br>       <a href="CEnt.html#TYPEmapper">mapper</a> -><br>       ?fb:'fld <a href="CEnt.html#TYPEborn_feedback_func">born_feedback_func</a> -> 'delta -> 'fld -> <a href="CEnt.html#TYPEworld">world</a> * 'fld</code></pre><div class="info">
+same than <code class="code">world_step</code> but with an additional folded parameter <code class="code">'fld</code>,
+    see <code class="code">foldable_system</code>s<br>
+</div>
+</body></html>

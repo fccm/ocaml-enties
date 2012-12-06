@@ -1,0 +1,501 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="next" href="CEnt.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Ent" rel="Chapter" href="Ent.html">
+<link title="CEnt" rel="Chapter" href="CEnt.html">
+<link title="UEnt" rel="Chapter" href="UEnt.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="Unit" rel="Chapter" href="Unit.html"><link title="Entities" rel="Section" href="#3_Entities">
+<link title="Components" rel="Section" href="#3_Components">
+<link title="Constructors / Accessors / Modifiers" rel="Section" href="#3_ConstructorsAccessorsModifiers">
+<link title="World" rel="Section" href="#3_World">
+<link title="World Getters" rel="Section" href="#3_WorldGetters">
+<link title="World Iterators" rel="Section" href="#3_WorldIterators">
+<link title="Mappers" rel="Section" href="#3_Mappers">
+<link title="Systems" rel="Section" href="#3_Systems">
+<link title="World Step" rel="Section" href="#3_WorldStep">
+<link title="Example" rel="Section" href="#3_Example">
+<link title="HOWTO" rel="Section" href="#3_HOWTO">
+<link title="Units Creation" rel="Section" href="#3_UnitsCreation">
+<title>Ent</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="CEnt.html" title="CEnt">Next</a>
+</div>
+<h1>Module <a href="type_Ent.html">Ent</a></h1>
+<pre><span class="keyword">module</span> Ent: <code class="code">sig</code> <a href="Ent.html">..</a> <code class="code">end</code></pre><div class="info">
+Entity/Component Oriented Game/Multimedia Module<br>
+</div>
+<hr width="100%">
+<br>
+<b>Note:</b> This is an <i>experimentation</i>, not a final work.<br>
+<br>
+<h3 id="3_Entities">Entities</h3><br>
+<pre><span id="TYPEid"><span class="keyword">type</span> <code class="type"></code>id</span> = <code class="type">int</code> </pre>
+<div class="info">
+id of an entity, entities have an id only after been added to the world<br>
+</div>
+
+<pre><span id="TYPEentity"><span class="keyword">type</span> <code class="type">('component_type, 'component)</code> entity</span> </pre>
+<div class="info">
+this is the base type of the <code class="code">entity / component</code> concept
+<p>
+
+    the <code class="code">component_type</code> is the key to access to the components<br>
+</div>
+
+<pre><span id="VALnew_entity"><span class="keyword">val</span> new_entity</span> : <code class="type">unit -> ('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a></code></pre><div class="info">
+generic game element<br>
+</div>
+<pre><span id="VALget_id"><span class="keyword">val</span> get_id</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> <a href="Ent.html#TYPEid">id</a></code></pre><div class="info">
+raises an exception if the entity has not been added to the world<br>
+</div>
+<pre><span id="VALget_id_opt"><span class="keyword">val</span> get_id_opt</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> <a href="Ent.html#TYPEid">id</a> option</code></pre><div class="info">
+same than <code class="code">get_id</code> but returns None instead of raising an exception<br>
+</div>
+<br>
+<h3 id="3_Components">Components</h3><br>
+<br>
+A component handles a property / attribute of an entity.
+<p>
+
+    An entity may have as many components as needed, but only
+    one component of each type.<br>
+<pre><span id="VALadd_component"><span class="keyword">val</span> add_component</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t * 'comp -> ('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a></code></pre><div class="info">
+<code class="code">add_component e (component_type, component_data)</code><br>
+</div>
+<pre><span id="VALreplace_component"><span class="keyword">val</span> replace_component</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -><br>       'comp_t -> 'comp -> ('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a></code></pre><div class="info">
+<code class="code">replace_component e component_type component_data</code><br>
+</div>
+<pre><span id="VALhas_component"><span class="keyword">val</span> has_component</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t -> bool</code></pre><pre><span id="VALhas_components"><span class="keyword">val</span> has_components</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t list -> bool</code></pre><div class="info">
+retruns true if the entity contains all the given component types
+<p>
+
+    (this function does not tell if the entity contains other components
+    or not)<br>
+</div>
+<pre><span id="VALhas_any_component"><span class="keyword">val</span> has_any_component</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t list -> bool</code></pre><div class="info">
+returns true if the entity contains at least one of the given component
+    types<br>
+</div>
+<pre><span id="VALget_component"><span class="keyword">val</span> get_component</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t -> 'comp</code></pre><div class="info">
+raises <code class="code">Not_found</code> if none found<br>
+</div>
+<pre><span id="VALget_component_opt"><span class="keyword">val</span> get_component_opt</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t -> 'comp option</code></pre><div class="info">
+returns <code class="code">None</code> if has not the component<br>
+</div>
+<pre><span id="VALremove_component"><span class="keyword">val</span> remove_component</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t -> ('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a></code></pre><pre><span id="VALiter_components"><span class="keyword">val</span> iter_components</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> ('comp_t -> 'comp -> unit) -> unit</code></pre><pre><span id="VALget_components"><span class="keyword">val</span> get_components</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t list</code></pre><pre><span id="VALcmp_components"><span class="keyword">val</span> cmp_components</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t list -> int</code></pre><pre><span id="VALcomponents_match"><span class="keyword">val</span> components_match</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -> 'comp_t list -> bool</code></pre><br>
+<h3 id="3_ConstructorsAccessorsModifiers">Constructors / Accessors / Modifiers</h3><br>
+<br>
+Instead of using the previous <code class="code">*component*</code> functions
+  you may simplify your life, your code and save time by using
+  the <code class="code">gen_comp</code> command line tool that generates all the constructors,
+  accessors and modifiers from the type definition of <code class="code">'component</code>.
+<p>
+
+  For example create a file <code class="code">"comp.ent"</code> with:
+<pre class="codepre"><code class="code">Alpha   int
+Beta    float
+Gamma   string
+Delta   char
+Epsilon bool
+</code></pre>
+<p>
+
+  then generate the constructors, accessors and modifiers
+  (and also printing functions for debuging) with:
+<pre class="codepre"><code class="code">ocaml gen_comp.ml -ml comp.ent &gt; comp.ml
+ocaml gen_comp.ml -mli comp.ent &gt; comp.mli
+</code></pre>
+<p>
+
+  See the <code class="code">HOWTO</code> section at the end for further informations.<br>
+<br>
+<h3 id="3_World">World</h3><br>
+<pre><span id="TYPEworld"><span class="keyword">type</span> <code class="type">('comp_t, 'comp)</code> world</span> </pre>
+<div class="info">
+the first type parameter is the <code class="code">component_type</code>
+<p>
+
+  the second is the <code class="code">component</code>
+<p>
+
+  for the third one see the doc of the function <code class="code">world_step</code>
+<p>
+
+  and see <code class="code">world_step_fold</code> about the <code class="code">'fld</code> type<br>
+</div>
+
+<pre><span id="VALnew_world"><span class="keyword">val</span> new_world</span> : <code class="type">unit -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a></code></pre><pre><span id="VALadd_entity"><span class="keyword">val</span> add_entity</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a></code></pre><pre><span id="VALadd_entities"><span class="keyword">val</span> add_entities</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> list -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a></code></pre><pre><span id="VALadd_entity_id"><span class="keyword">val</span> add_entity_id</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a> * <a href="Ent.html#TYPEid">id</a></code></pre><div class="info">
+same than <code class="code">add_entity</code> but also return the id that was given to this entity<br>
+</div>
+<pre><span id="VALadd_entities_id"><span class="keyword">val</span> add_entities_id</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -><br>       ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> list -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a> * <a href="Ent.html#TYPEid">id</a> list</code></pre><pre><span id="VALadd_entities_init"><span class="keyword">val</span> add_entities_init</span> : <code class="type">w:('a, 'b) <a href="Ent.html#TYPEworld">world</a> -><br>       n:int -> f:(int -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a>) -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a></code></pre><pre><span id="VALhas_entity"><span class="keyword">val</span> has_entity</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> <a href="Ent.html#TYPEid">id</a> -> bool</code></pre><div class="info">
+does an entity exists with the given <code class="code">id</code><br>
+</div>
+<pre><span id="VALreplace_entity"><span class="keyword">val</span> replace_entity</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> <a href="Ent.html#TYPEid">id</a> -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a></code></pre><pre><span id="VALremove_entity"><span class="keyword">val</span> remove_entity</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a></code></pre><pre><span id="VALremove_entity_id"><span class="keyword">val</span> remove_entity_id</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> <a href="Ent.html#TYPEid">id</a> -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a></code></pre><br>
+<h3 id="3_WorldGetters">World Getters</h3><br>
+<pre><span id="VALget_entity"><span class="keyword">val</span> get_entity</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> <a href="Ent.html#TYPEid">id</a> -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a></code></pre><pre><span id="VALget_entity_opt"><span class="keyword">val</span> get_entity_opt</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> <a href="Ent.html#TYPEid">id</a> -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> option</code></pre><div class="info">
+get an entity by its id<br>
+</div>
+<pre><span id="VALget_entities"><span class="keyword">val</span> get_entities</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> <a href="Ent.html#TYPEid">id</a> list -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> list</code></pre><div class="info">
+ids not found are just skipped<br>
+</div>
+<pre><span id="VALdo_get_entities"><span class="keyword">val</span> do_get_entities</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> <a href="Ent.html#TYPEid">id</a> list -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> list</code></pre><div class="info">
+raises <code class="code">Not_found</code> if an id is not found<br>
+</div>
+<pre><span id="VALget_entities_with_components"><span class="keyword">val</span> get_entities_with_components</span> : <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEworld">world</a> -><br>       'comp_t list -> ('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> list</code></pre><br>
+<h3 id="3_WorldIterators">World Iterators</h3><br>
+<br>
+simple iterators not using any <code class="code">mapper</code><br>
+<pre><span id="VALiter_entities"><span class="keyword">val</span> iter_entities</span> : <code class="type">(('a, 'b) <a href="Ent.html#TYPEentity">entity</a> -> unit) -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> unit</code></pre><pre><span id="VALfold_entities"><span class="keyword">val</span> fold_entities</span> : <code class="type">(('a, 'b) <a href="Ent.html#TYPEentity">entity</a> -> 'p -> 'p) -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> 'p -> 'p</code></pre><pre><span id="VALnum_entities"><span class="keyword">val</span> num_entities</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -> int</code></pre><pre><span id="VALnum_entities_with_components"><span class="keyword">val</span> num_entities_with_components</span> : <code class="type">('comp_t, 'b) <a href="Ent.html#TYPEworld">world</a> -> 'comp_t list -> int</code></pre><br>
+<h3 id="3_Mappers">Mappers</h3><br>
+<br>
+a system will be only applied to the entities that contain
+    all the component types of the associated mapper<br>
+<pre><span id="TYPEmapper"><span class="keyword">type</span> <code class="type">'component_type</code> mapper</span> </pre>
+
+<pre><span id="VALadd_mapper"><span class="keyword">val</span> add_mapper</span> : <code class="type">('comp_t, 'b) <a href="Ent.html#TYPEworld">world</a> -><br>       'comp_t list -> ('comp_t, 'b) <a href="Ent.html#TYPEworld">world</a> * 'comp_t <a href="Ent.html#TYPEmapper">mapper</a></code></pre><br>
+<h3 id="3_Systems">Systems</h3><br>
+<br>
+A <code class="code">system</code> may update or remove entities, or create new ones, each time
+    <code class="code">world_step</code> is called.<br>
+<pre><code><span id="TYPEupdate"><span class="keyword">type</span> <code class="type">'a</code> update</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTupdate.Identical"><span class="constructor">Identical</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >no components changed</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTupdate.Updated"><span class="constructor">Updated</span></span> <span class="keyword">of</span> <code class="type">'a</code></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >the value of some components where updated</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTupdate.Replace"><span class="constructor">Replace</span></span> <span class="keyword">of</span> <code class="type">'a</code></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >some components were added and/or removed</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTupdate.Removed"><span class="constructor">Removed</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >remove this entity</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+<pre><span id="TYPEsystem"><span class="keyword">type</span> <code class="type">('comp_t, 'comp, 'delta)</code> system</span> = <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -><br>       ('comp_t, 'comp) <a href="Ent.html#TYPEworld">world</a> -><br>       'delta -><br>       ('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> <a href="Ent.html#TYPEupdate">update</a> * ('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> list</code> </pre>
+<div class="info">
+the first returned value should be the input entity with eventual changes
+    and the second returned value is eventual new entities that should be added
+    to the world<br>
+</div>
+
+<pre><span id="TYPEfoldable_system"><span class="keyword">type</span> <code class="type">('a, 'b, 'delta, 'fld)</code> foldable_system</span> = <code class="type">('a, 'b) <a href="Ent.html#TYPEentity">entity</a> -><br>       ('a, 'b) <a href="Ent.html#TYPEworld">world</a> -><br>       'delta -><br>       'fld -> ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> <a href="Ent.html#TYPEupdate">update</a> * ('a, 'b) <a href="Ent.html#TYPEentity">entity</a> list * 'fld</code> </pre>
+<div class="info">
+similar than <code class="code">system</code> but a <code class="code">foldable_system</code> has an additional folded
+    parameter that can be given with <code class="code">world_step_fold</code><br>
+</div>
+
+<br>
+<h3 id="3_WorldStep">World Step</h3><br>
+<br>
+the heart beats here<br>
+<pre><span id="TYPEborn_feedback_func"><span class="keyword">type</span> <code class="type">('comp_t, 'comp, 'fld)</code> born_feedback_func</span> = <code class="type">('comp_t, 'comp) <a href="Ent.html#TYPEworld">world</a> -><br>       ('comp_t, 'comp) <a href="Ent.html#TYPEentity">entity</a> -><br>       <a href="Ent.html#TYPEid">id</a> list -> 'fld -> ('comp_t, 'comp) <a href="Ent.html#TYPEworld">world</a> * 'fld</code> </pre>
+<div class="info">
+this callback is used to make parents aware of the ids of their newly born
+    children (see <code class="code">system</code> signature)<br>
+</div>
+
+<pre><span id="VALworld_step"><span class="keyword">val</span> world_step</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -><br>       ('a, 'b, 'delta) <a href="Ent.html#TYPEsystem">system</a> -> 'a <a href="Ent.html#TYPEmapper">mapper</a> -> 'delta -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a></code></pre><div class="info">
+<code class="code">'delta</code> is the input parameter that is given to the systems<br>
+</div>
+<pre><span id="VALworld_step_fold"><span class="keyword">val</span> world_step_fold</span> : <code class="type">('a, 'b) <a href="Ent.html#TYPEworld">world</a> -><br>       ('a, 'b, 'delta, 'fld) <a href="Ent.html#TYPEfoldable_system">foldable_system</a> -><br>       'a <a href="Ent.html#TYPEmapper">mapper</a> -><br>       ?fb:('a, 'b, 'fld) <a href="Ent.html#TYPEborn_feedback_func">born_feedback_func</a> -><br>       'delta -> 'fld -> ('a, 'b) <a href="Ent.html#TYPEworld">world</a> * 'fld</code></pre><div class="info">
+same than <code class="code">world_step</code> but with an additional folded parameter <code class="code">'fld</code>,
+    see <code class="code">foldable_system</code>s<br>
+</div>
+<br>
+<h3 id="3_Example">Example</h3><br>
+<br>
+Here is an example without using the <code class="code">gen_comp</code> helper tool:<br>
+<br>
+<pre class="codepre"><code class="code">type component_type =
+  | Level_t
+  | Name_t
+
+type component =
+  | Level of int
+  | Name of string
+
+let make_entity level name =
+  let e = Ent.new_entity () in
+  let e = Ent.add_component e (Name_t, Name name) in
+  let e = Ent.add_component e (Level_t, Level level) in
+  (e)
+
+let get_level e =
+  match Ent.get_component e Level_t with
+  | Level level -&gt; level
+  | _ -&gt; failwith "get_level"
+
+let bump_system_comps = [Level_t]
+
+let bump_system e w bump =
+  let level = get_level e in
+  let e = Ent.replace_component e Level_t (Level (level + bump)) in
+  (Ent.Updated e, [])
+
+let name_string e =
+  match Ent.get_component_opt e Name_t with
+  | Some (Name name) -&gt; Printf.sprintf "name=%s" name
+  | _ -&gt; ""
+
+let level_string e =
+  match Ent.get_component_opt e Level_t with
+  | Some (Level level) -&gt; Printf.sprintf "level=%d" level
+  | _ -&gt; ""
+
+let () =
+  let e1 = make_entity 1 "dummy-A" in
+  let e2 = make_entity 6 "dummy-B" in
+  let w = Ent.new_world () in
+  let w = Ent.add_entities w [e1; e2] in
+  let w, bump_system_mapper = Ent.add_mapper w bump_system_comps in
+  let w =
+    Ent.world_step w
+      bump_system
+      bump_system_mapper
+      1
+  in
+  Ent.iter_entities (fun e -&gt;
+    Printf.printf "Entity: %s %s\n" (name_string e) (level_string e)
+  ) w
+</code></pre>
+<p>
+
+  Running this example:
+<pre class="codepre"><code class="code">$ ocaml -I $ENT_DIR ent.cma example.ml
+Entity: name=dummy-A level=2
+Entity: name=dummy-B level=7
+</code></pre>
+<p>
+
+  This example uses only this module.
+<p>
+
+  Even with a small example like this one, you can see that the functions
+  to set and get the component values are not very elegant.
+  This is why there is the <code class="code">gen_comp</code> command line tool to generate
+  functions to simplify components management.
+  Read the following Howto to see how to do this.<br>
+<br>
+<h3 id="3_HOWTO">HOWTO</h3><br>
+<br>
+Here is how to create a <code class="code">Comp</code> module to manage the components.
+<p>
+
+  You can generate the constructors, accessors and modifiers
+  from the type definition of the <code class="code">component</code>s.
+<p>
+
+  This type definition is not written in ocaml, but in a simplified way.
+  Here is an example with the file <code class="code">"comp.ent"</code>:
+<p>
+
+<pre class="codepre"><code class="code">$ cat comp.ent
+Position  xy
+Velocity  xy
+</code></pre>
+<p>
+
+  You need to define each type of this <code class="code">*.ent</code> file,
+  and <code class="code">string_of_*</code> functions:
+<p>
+
+<pre class="codepre"><code class="code">$ cat comp_before.mli
+type xy = float * float
+</code></pre>
+<p>
+
+<pre class="codepre"><code class="code">$ cat comp_before.ml
+type xy = float * float
+
+let string_of_xy (x, y) =
+  Printf.sprintf "(%g, %g)" x y
+</code></pre>
+<p>
+
+  Generate and compile this <code class="code">Comp</code> module
+  using the provided <code class="code">gen_comp</code> command line tool:
+<p>
+
+<pre class="codepre"><code class="code">cat comp_before.mli &gt; comp.mli
+cat comp_before.ml &gt; comp.ml
+
+ocaml gen_comp.ml -mli comp.ent &gt;&gt; comp.mli
+ocaml gen_comp.ml -ml comp.ent &gt;&gt; comp.ml
+
+ocamlc -c -I $ENT_DIR comp.mli
+ocamlc -c -I $ENT_DIR comp.ml
+</code></pre>
+<p>
+
+  Now you can write your main code:
+<p>
+
+<pre class="codepre"><code class="code">let fps = 30  (* frames per second *)
+let dt = 1.0 /. float fps  (* elapsed time between 2 frames *)
+
+(* make n loops *)
+let rec loops n f w =
+  if n &lt;= 0 then w else
+    let w = f w in
+    loops (n-1) f w
+
+let move_entity (x, y) (vx, vy) dt =
+  (x +. vx *. dt,
+   y +. vy *. dt)
+
+(* define which components needs moving_system *)
+let moving_system_comps =
+  [Comp.Position_t; Comp.Velocity_t]
+
+let moving_system e w dt =
+  let pos = Comp.get_position e in
+  let vel = Comp.get_velocity e in
+  let new_pos = move_entity pos vel dt in
+  let e = Comp.update_position e new_pos in
+  Ent.Updated e, []
+
+let make_entity pos vel =
+  let e = Ent.new_entity () in
+  let e = Comp.add_position e pos in
+  let e = Comp.add_velocity e vel in
+  (e)
+
+let () =
+  let e1 = make_entity (2.0, 3.0) (0.1, 0.1) in
+  let e2 = make_entity (5.0, 6.0) (0.1, 0.2) in
+  let w = Ent.new_world () in
+  let w = Ent.add_entities w [e1; e2] in
+  let w, moving_system_mapper =
+    Ent.add_mapper w moving_system_comps
+  in
+  let step w =
+    Ent.world_step w
+      moving_system
+      moving_system_mapper
+      dt
+  in
+  let w = loops fps step w in  (* loop for 1 second *)
+  Comp.print_entities w
+</code></pre>
+<p>
+
+  Run this code:
+<p>
+
+<pre class="codepre"><code class="code">$ ocaml -I $ENT_DIR ent.cma comp.cmo howto.ml
+Entity:
+  Position_t  Position (2.1, 3.1)
+  Velocity_t  Velocity (0.1, 0.1)
+
+Entity:
+  Position_t  Position (5.1, 6.2)
+  Velocity_t  Velocity (0.1, 0.2)
+</code></pre><br>
+<br>
+<h3 id="3_UnitsCreation">Units Creation</h3><br>
+<br>
+In order to simplify the creation of different units
+  there is the command line tool <code class="code">gen_units</code>.
+<p>
+
+  It generates the code of a function to create each unit
+  from a simple description file.
+<p>
+
+  This description file has one unit description by line.
+  Each line contains several elements separated by tabulations.
+  The first element of the line is the unit name.
+  All the following elements define the components of this unit.
+<p>
+
+  Here is an example:
+<pre class="codepre"><code class="code">my_item  Position  Velocity
+</code></pre>
+<p>
+
+  Generate the code from this unit description using the
+  <code class="code">gen_units</code> command line tool:
+<pre class="codepre"><code class="code">$ ocaml gen_units.ml units.def &gt; units.ml
+</code></pre>
+<p>
+
+  Here is the generated function:
+<pre class="codepre"><code class="code">val make_my_item : Comp.xy -&gt; Comp.xy -&gt; Comp.entity
+</code></pre>
+<p>
+
+  The generated code of this function is:
+<pre class="codepre"><code class="code">let make_my_item position velocity =
+  let e = Ent.new_entity () in
+  let e = Comp.add_position e position in
+  let e = Comp.add_velocity e velocity in
+  (e)
+</code></pre>
+<p>
+
+  The generated <code class="code">Comp</code> module (see the previous section)
+  needs to be compiled before this <code class="code">Units</code> module.<br>
+<br>
+<b>More details for units description</b>
+<p>
+
+  To create labels for the parameters of the generated functions:
+<pre class="codepre"><code class="code">static_item  pos:Position
+moving_item  pos:Position  vel:Velocity
+</code></pre>
+<p>
+
+  Here the function won't have any parameter for velocity,
+  and the function will add a <code class="code">Velocity</code> component with the
+  given value:
+<pre class="codepre"><code class="code">falling_item  pos:Position  Velocity=(0.0, -0.2)
+</code></pre>
+<p>
+
+  This given value may be a function call:
+<pre class="codepre"><code class="code">random_item  Position=(rand_pos ())  Velocity=(rand_vel ())
+</code></pre>
+<p>
+
+  Parameters with a default value:
+<pre class="codepre"><code class="code">item_defaults  ?pos:Position=(0.0, 0.0)  ?vel:Velocity=(0.0, 0.0)
+</code></pre>
+<p>
+
+  If initialisation functions are used you can put these in
+  an other file <code class="code">units_init_funcs.ml</code> and compile everything (after
+  the <code class="code">Comp</code> module) like this:
+<pre class="codepre"><code class="code">$ echo "open Units_init_funcs" &gt; units.ml
+$ ocaml gen_units.ml units.def &gt;&gt; units.ml
+$ ocamlc -c units_init_funcs.ml
+$ ocamlc -c -I $ENT_DIR units.ml
+</code></pre><br>
+</body></html>

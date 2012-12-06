@@ -1,0 +1,26 @@
+### Example of unit creation
+
+## Simple ones, each component is a parameter
+
+omicron		Alpha
+sigma		Alpha		Beta
+upsilon		Gamma		Delta		Epsilon
+iota		Zeta
+mu		Alpha		Zeta
+
+# labels for parameters
+
+theta		a:Alpha
+omega		a:Alpha		b:Beta
+
+## components with a given value
+
+aleph		a:Alpha		Beta=1.0
+yod		Alpha=8		Beta=(Random.float 1.0)
+
+## optional parameters
+# extra () should be added as needed
+ayin		?a:Alpha=10
+phi		?a:Alpha=0		b:Beta
+chi		?a:Alpha=2		Epsilon
+psi		Alpha		?e:Epsilon=true

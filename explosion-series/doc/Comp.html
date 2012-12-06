@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Vars.html">
+<link rel="next" href="State.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Vars" rel="Chapter" href="Vars.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="State" rel="Chapter" href="State.html">
+<link title="App" rel="Chapter" href="App.html">
+<link title="View" rel="Chapter" href="View.html">
+<link title="Control" rel="Chapter" href="Control.html"><link title="Type of Components" rel="Section" href="#3_TypeofComponents">
+<link title="Setters" rel="Section" href="#3_Setters">
+<link title="Getters" rel="Section" href="#3_Getters">
+<link title="Optional Getters" rel="Section" href="#3_OptionalGetters">
+<link title="Getters with Default" rel="Section" href="#3_GetterswithDefault">
+<link title="Interrogators" rel="Section" href="#3_Interrogators">
+<link title="Removers" rel="Section" href="#3_Removers">
+<link title="Updaters" rel="Section" href="#3_Updaters">
+<link title="Debuggers" rel="Section" href="#3_Debuggers">
+<link title="Printers" rel="Section" href="#3_Printers">
+<title>Comp</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Vars.html" title="Vars">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="State.html" title="State">Next</a>
+</div>
+<h1>Module <a href="type_Comp.html">Comp</a></h1>
+<pre><span class="keyword">module</span> Comp: <code class="code">sig</code> <a href="Comp.html">..</a> <code class="code">end</code></pre><div class="info">
+Component Management<br>
+</div>
+<hr width="100%">
+<pre><span id="TYPExy"><span class="keyword">type</span> <code class="type"></code>xy</span> = <code class="type">float * float</code> </pre>
+
+<pre><span id="TYPErgb"><span class="keyword">type</span> <code class="type"></code>rgb</span> = <code class="type">float * float * float</code> </pre>
+
+<br>
+Component Management<br>
+<br>
+<h3 id="3_TypeofComponents">Type of Components</h3><br>
+<pre><code><span id="TYPEcomponent_type"><span class="keyword">type</span> <code class="type"></code>component_type</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Position_t"><span class="constructor">Position_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Velocity_t"><span class="constructor">Velocity_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Radius_t"><span class="constructor">Radius_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Color_t"><span class="constructor">Color_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Points_t"><span class="constructor">Points_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Expand_size_t"><span class="constructor">Expand_size_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Expanded_time_t"><span class="constructor">Expanded_time_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Expanded_birth_t"><span class="constructor">Expanded_birth_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Is_expanded_t"><span class="constructor">Is_expanded_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Not_expanded_t"><span class="constructor">Not_expanded_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Expanding_t"><span class="constructor">Expanding_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Expanding_finished_t"><span class="constructor">Expanding_finished_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Unexpanding_t"><span class="constructor">Unexpanding_t</span></span></code></td>
+
+</tr></table>
+
+
+<pre><code><span id="TYPEcomponent"><span class="keyword">type</span> <code class="type"></code>component</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Position"><span class="constructor">Position</span></span> <span class="keyword">of</span> <code class="type"><a href="Comp.html#TYPExy">xy</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Velocity"><span class="constructor">Velocity</span></span> <span class="keyword">of</span> <code class="type"><a href="Comp.html#TYPExy">xy</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Radius"><span class="constructor">Radius</span></span> <span class="keyword">of</span> <code class="type">float</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Color"><span class="constructor">Color</span></span> <span class="keyword">of</span> <code class="type"><a href="Comp.html#TYPErgb">rgb</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Points"><span class="constructor">Points</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Expand_size"><span class="constructor">Expand_size</span></span> <span class="keyword">of</span> <code class="type">float</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Expanded_time"><span class="constructor">Expanded_time</span></span> <span class="keyword">of</span> <code class="type">float</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Expanded_birth"><span class="constructor">Expanded_birth</span></span> <span class="keyword">of</span> <code class="type">float</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Is_expanded"><span class="constructor">Is_expanded</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Not_expanded"><span class="constructor">Not_expanded</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Expanding"><span class="constructor">Expanding</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Expanding_finished"><span class="constructor">Expanding_finished</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Unexpanding"><span class="constructor">Unexpanding</span></span></code></td>
+
+</tr></table>
+
+
+<pre><span id="TYPEentity"><span class="keyword">type</span> <code class="type"></code>entity</span> = <code class="type">(<a href="Comp.html#TYPEcomponent_type">component_type</a>, <a href="Comp.html#TYPEcomponent">component</a>) Ent.entity</code> </pre>
+
+<pre><span id="TYPEworld"><span class="keyword">type</span> <code class="type"></code>world</span> = <code class="type">(<a href="Comp.html#TYPEcomponent_type">component_type</a>, <a href="Comp.html#TYPEcomponent">component</a>) Ent.world</code> </pre>
+
+<br>
+<h3 id="3_Setters">Setters</h3><br>
+<pre><span id="VALadd_position"><span class="keyword">val</span> add_position</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_velocity"><span class="keyword">val</span> add_velocity</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_radius"><span class="keyword">val</span> add_radius</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_color"><span class="keyword">val</span> add_color</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPErgb">rgb</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_points"><span class="keyword">val</span> add_points</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_expand_size"><span class="keyword">val</span> add_expand_size</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_expanded_time"><span class="keyword">val</span> add_expanded_time</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_expanded_birth"><span class="keyword">val</span> add_expanded_birth</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_is_expanded"><span class="keyword">val</span> add_is_expanded</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_not_expanded"><span class="keyword">val</span> add_not_expanded</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_expanding"><span class="keyword">val</span> add_expanding</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_expanding_finished"><span class="keyword">val</span> add_expanding_finished</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_unexpanding"><span class="keyword">val</span> add_unexpanding</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><br>
+<h3 id="3_Getters">Getters</h3><br>
+<pre><span id="VALget_position"><span class="keyword">val</span> get_position</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a></code></pre><pre><span id="VALget_velocity"><span class="keyword">val</span> get_velocity</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a></code></pre><pre><span id="VALget_radius"><span class="keyword">val</span> get_radius</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float</code></pre><pre><span id="VALget_color"><span class="keyword">val</span> get_color</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPErgb">rgb</a></code></pre><pre><span id="VALget_points"><span class="keyword">val</span> get_points</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int</code></pre><pre><span id="VALget_expand_size"><span class="keyword">val</span> get_expand_size</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float</code></pre><pre><span id="VALget_expanded_time"><span class="keyword">val</span> get_expanded_time</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float</code></pre><pre><span id="VALget_expanded_birth"><span class="keyword">val</span> get_expanded_birth</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float</code></pre><br>
+<h3 id="3_OptionalGetters">Optional Getters</h3><br>
+<pre><span id="VALget_position_opt"><span class="keyword">val</span> get_position_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a> option</code></pre><pre><span id="VALget_velocity_opt"><span class="keyword">val</span> get_velocity_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a> option</code></pre><pre><span id="VALget_radius_opt"><span class="keyword">val</span> get_radius_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float option</code></pre><pre><span id="VALget_color_opt"><span class="keyword">val</span> get_color_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPErgb">rgb</a> option</code></pre><pre><span id="VALget_points_opt"><span class="keyword">val</span> get_points_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int option</code></pre><pre><span id="VALget_expand_size_opt"><span class="keyword">val</span> get_expand_size_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float option</code></pre><pre><span id="VALget_expanded_time_opt"><span class="keyword">val</span> get_expanded_time_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float option</code></pre><pre><span id="VALget_expanded_birth_opt"><span class="keyword">val</span> get_expanded_birth_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float option</code></pre><br>
+<h3 id="3_GetterswithDefault">Getters with Default</h3><br>
+<pre><span id="VALget_position_default"><span class="keyword">val</span> get_position_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a> -> <a href="Comp.html#TYPExy">xy</a></code></pre><pre><span id="VALget_velocity_default"><span class="keyword">val</span> get_velocity_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a> -> <a href="Comp.html#TYPExy">xy</a></code></pre><pre><span id="VALget_radius_default"><span class="keyword">val</span> get_radius_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> float</code></pre><pre><span id="VALget_color_default"><span class="keyword">val</span> get_color_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPErgb">rgb</a> -> <a href="Comp.html#TYPErgb">rgb</a></code></pre><pre><span id="VALget_points_default"><span class="keyword">val</span> get_points_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int -> int</code></pre><pre><span id="VALget_expand_size_default"><span class="keyword">val</span> get_expand_size_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> float</code></pre><pre><span id="VALget_expanded_time_default"><span class="keyword">val</span> get_expanded_time_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> float</code></pre><pre><span id="VALget_expanded_birth_default"><span class="keyword">val</span> get_expanded_birth_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> float</code></pre><br>
+<h3 id="3_Interrogators">Interrogators</h3><br>
+<pre><span id="VALhas_position"><span class="keyword">val</span> has_position</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_velocity"><span class="keyword">val</span> has_velocity</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_radius"><span class="keyword">val</span> has_radius</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_color"><span class="keyword">val</span> has_color</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_points"><span class="keyword">val</span> has_points</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_expand_size"><span class="keyword">val</span> has_expand_size</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_expanded_time"><span class="keyword">val</span> has_expanded_time</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_expanded_birth"><span class="keyword">val</span> has_expanded_birth</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_is_expanded"><span class="keyword">val</span> has_is_expanded</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_not_expanded"><span class="keyword">val</span> has_not_expanded</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_expanding"><span class="keyword">val</span> has_expanding</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_expanding_finished"><span class="keyword">val</span> has_expanding_finished</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_unexpanding"><span class="keyword">val</span> has_unexpanding</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><br>
+<h3 id="3_Removers">Removers</h3><br>
+<pre><span id="VALremove_position"><span class="keyword">val</span> remove_position</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_velocity"><span class="keyword">val</span> remove_velocity</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_radius"><span class="keyword">val</span> remove_radius</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_color"><span class="keyword">val</span> remove_color</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_points"><span class="keyword">val</span> remove_points</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_expand_size"><span class="keyword">val</span> remove_expand_size</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_expanded_time"><span class="keyword">val</span> remove_expanded_time</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_expanded_birth"><span class="keyword">val</span> remove_expanded_birth</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_is_expanded"><span class="keyword">val</span> remove_is_expanded</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_not_expanded"><span class="keyword">val</span> remove_not_expanded</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_expanding"><span class="keyword">val</span> remove_expanding</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_expanding_finished"><span class="keyword">val</span> remove_expanding_finished</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_unexpanding"><span class="keyword">val</span> remove_unexpanding</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><br>
+<h3 id="3_Updaters">Updaters</h3><br>
+<pre><span id="VALupdate_position"><span class="keyword">val</span> update_position</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_velocity"><span class="keyword">val</span> update_velocity</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPExy">xy</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_radius"><span class="keyword">val</span> update_radius</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_color"><span class="keyword">val</span> update_color</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPErgb">rgb</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_points"><span class="keyword">val</span> update_points</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_expand_size"><span class="keyword">val</span> update_expand_size</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_expanded_time"><span class="keyword">val</span> update_expanded_time</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_expanded_birth"><span class="keyword">val</span> update_expanded_birth</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><br>
+<h3 id="3_Debuggers">Debuggers</h3><br>
+<pre><span id="VALstring_of_component_type"><span class="keyword">val</span> string_of_component_type</span> : <code class="type"><a href="Comp.html#TYPEcomponent_type">component_type</a> -> string</code></pre><pre><span id="VALstring_of_component"><span class="keyword">val</span> string_of_component</span> : <code class="type"><a href="Comp.html#TYPEcomponent">component</a> -> string</code></pre><br>
+<h3 id="3_Printers">Printers</h3><br>
+<pre><span id="VALprint_entity"><span class="keyword">val</span> print_entity</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> unit</code></pre><pre><span id="VALprint_entities"><span class="keyword">val</span> print_entities</span> : <code class="type"><a href="Comp.html#TYPEworld">world</a> -> unit</code></pre></body></html>

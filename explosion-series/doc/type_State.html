@@ -1,0 +1,30 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Vars" rel="Chapter" href="Vars.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="State" rel="Chapter" href="State.html">
+<link title="App" rel="Chapter" href="App.html">
+<link title="View" rel="Chapter" href="View.html">
+<link title="Control" rel="Chapter" href="Control.html"><title>State</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dir_mul&nbsp;:&nbsp;float&nbsp;*&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dir_add&nbsp;:&nbsp;float&nbsp;*&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dir_sub&nbsp;:&nbsp;float&nbsp;*&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;vec_add&nbsp;:&nbsp;float&nbsp;*&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;vec_sub&nbsp;:&nbsp;float&nbsp;*&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;*&nbsp;float<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;step_return&nbsp;=&nbsp;<span class="constructor">Continue</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">State</span>.t&nbsp;*&nbsp;int)&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Done</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;init_state&nbsp;:&nbsp;difficulty:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">State</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;state_step&nbsp;:&nbsp;<span class="constructor">State</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;t:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;dt:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">State</span>.step_return<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;iter_entities&nbsp;:&nbsp;(<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">State</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;print_state&nbsp;:&nbsp;<span class="constructor">State</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;user_expanded_ball&nbsp;:&nbsp;<span class="constructor">State</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Comp</span>.xy&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">State</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_expanded&nbsp;:&nbsp;<span class="constructor">Comp</span>.entity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;option<br>
+<span class="keyword">end</span></code></body></html>

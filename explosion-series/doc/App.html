@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="State.html">
+<link rel="next" href="View.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Vars" rel="Chapter" href="Vars.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="State" rel="Chapter" href="State.html">
+<link title="App" rel="Chapter" href="App.html">
+<link title="View" rel="Chapter" href="View.html">
+<link title="Control" rel="Chapter" href="Control.html"><title>App</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="State.html" title="State">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="View.html" title="View">Next</a>
+</div>
+<h1>Module <a href="type_App.html">App</a></h1>
+<pre><span class="keyword">module</span> App: <code class="code">sig</code> <a href="App.html">..</a> <code class="code">end</code></pre><div class="info">
+The Logic<br>
+</div>
+<hr width="100%">
+<pre><span id="TYPEnew_round_func"><span class="keyword">type</span> <code class="type"></code>new_round_func</span> = <code class="type">score:int -> difficulty:float -> int * float</code> </pre>
+
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.state">state</span>&nbsp;:<code class="type"><a href="State.html#TYPEt">State.t</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.score">score</span>&nbsp;:<code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.round">round</span>&nbsp;:<code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.difficulty">difficulty</span>&nbsp;:<code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.new_round">new_round</span>&nbsp;:<code class="type"><a href="App.html#TYPEnew_round_func">new_round_func</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+<pre><span id="VALinit_app"><span class="keyword">val</span> init_app</span> : <code class="type">difficulty:float -> new_round:<a href="App.html#TYPEnew_round_func">new_round_func</a> -> <a href="App.html#TYPEt">t</a></code></pre><pre><span id="VALuser_clic"><span class="keyword">val</span> user_clic</span> : <code class="type"><a href="App.html#TYPEt">t</a> -> t:float -> clic:int -> pos:float * float -> <a href="App.html#TYPEt">t</a></code></pre><pre><span id="VALuser_infos"><span class="keyword">val</span> user_infos</span> : <code class="type"><a href="App.html#TYPEt">t</a> -> string</code></pre><pre><span id="VALat_exit"><span class="keyword">val</span> at_exit</span> : <code class="type"><a href="App.html#TYPEt">t</a> -> unit</code></pre><pre><span id="VALstep"><span class="keyword">val</span> step</span> : <code class="type"><a href="App.html#TYPEt">t</a> -> clic:int -> t:float -> dt:float -> <a href="App.html#TYPEt">t</a> * int</code></pre></body></html>

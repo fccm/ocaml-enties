@@ -1,0 +1,31 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Vars" rel="Chapter" href="Vars.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="State" rel="Chapter" href="State.html">
+<link title="App" rel="Chapter" href="App.html">
+<link title="View" rel="Chapter" href="View.html">
+<link title="Control" rel="Chapter" href="Control.html"><title>Control</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;mouse&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">View</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;t:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;id:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;button:<span class="constructor">Windowing</span>.mouse_button&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;state:<span class="constructor">Windowing</span>.switch_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;y:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">View</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;keyboard&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">View</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;t:float&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;key:<span class="constructor">Windowing</span>.key&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;state:<span class="constructor">Windowing</span>.switch_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;ctrl:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;alt:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;shift:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">View</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;paused&nbsp;:&nbsp;<span class="constructor">View</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;continue&nbsp;:&nbsp;<span class="constructor">View</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;t:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+<span class="keyword">end</span></code></body></html>

@@ -1,0 +1,6 @@
+Alpha   int
+Beta    float
+Gamma   string
+Delta   char
+Epsilon bool
+Zeta

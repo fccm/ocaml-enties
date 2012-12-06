@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="UEnt.html">
+<link rel="next" href="Unit.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Ent" rel="Chapter" href="Ent.html">
+<link title="CEnt" rel="Chapter" href="CEnt.html">
+<link title="UEnt" rel="Chapter" href="UEnt.html">
+<link title="Comp" rel="Chapter" href="Comp.html">
+<link title="Unit" rel="Chapter" href="Unit.html"><link title="Type of Components" rel="Section" href="#3_TypeofComponents">
+<link title="Setters" rel="Section" href="#3_Setters">
+<link title="Getters" rel="Section" href="#3_Getters">
+<link title="Optional Getters" rel="Section" href="#3_OptionalGetters">
+<link title="Getters with Default" rel="Section" href="#3_GetterswithDefault">
+<link title="Interrogators" rel="Section" href="#3_Interrogators">
+<link title="Removers" rel="Section" href="#3_Removers">
+<link title="Updaters" rel="Section" href="#3_Updaters">
+<link title="Debuggers" rel="Section" href="#3_Debuggers">
+<link title="Printers" rel="Section" href="#3_Printers">
+<title>Comp</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="UEnt.html" title="UEnt">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Unit.html" title="Unit">Next</a>
+</div>
+<h1>Module <a href="type_Comp.html">Comp</a></h1>
+<pre><span class="keyword">module</span> Comp: <code class="code">sig</code> <a href="Comp.html">..</a> <code class="code">end</code></pre><div class="info">
+Component Management<br>
+</div>
+<hr width="100%">
+<br>
+<h3 id="3_TypeofComponents">Type of Components</h3><br>
+<pre><code><span id="TYPEcomponent_type"><span class="keyword">type</span> <code class="type"></code>component_type</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Alpha_t"><span class="constructor">Alpha_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Beta_t"><span class="constructor">Beta_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Gamma_t"><span class="constructor">Gamma_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Delta_t"><span class="constructor">Delta_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Epsilon_t"><span class="constructor">Epsilon_t</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent_type.Zeta_t"><span class="constructor">Zeta_t</span></span></code></td>
+
+</tr></table>
+
+
+<pre><code><span id="TYPEcomponent"><span class="keyword">type</span> <code class="type"></code>component</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Alpha"><span class="constructor">Alpha</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Beta"><span class="constructor">Beta</span></span> <span class="keyword">of</span> <code class="type">float</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Gamma"><span class="constructor">Gamma</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Delta"><span class="constructor">Delta</span></span> <span class="keyword">of</span> <code class="type">char</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Epsilon"><span class="constructor">Epsilon</span></span> <span class="keyword">of</span> <code class="type">bool</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomponent.Zeta"><span class="constructor">Zeta</span></span></code></td>
+
+</tr></table>
+
+
+<pre><span id="TYPEentity"><span class="keyword">type</span> <code class="type"></code>entity</span> = <code class="type">(<a href="Comp.html#TYPEcomponent_type">component_type</a>, <a href="Comp.html#TYPEcomponent">component</a>) <a href="Ent.html#TYPEentity">Ent.entity</a></code> </pre>
+
+<pre><span id="TYPEworld"><span class="keyword">type</span> <code class="type"></code>world</span> = <code class="type">(<a href="Comp.html#TYPEcomponent_type">component_type</a>, <a href="Comp.html#TYPEcomponent">component</a>) <a href="Ent.html#TYPEworld">Ent.world</a></code> </pre>
+
+<br>
+<h3 id="3_Setters">Setters</h3><br>
+<pre><span id="VALadd_alpha"><span class="keyword">val</span> add_alpha</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_beta"><span class="keyword">val</span> add_beta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_gamma"><span class="keyword">val</span> add_gamma</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> string -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_delta"><span class="keyword">val</span> add_delta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> char -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_epsilon"><span class="keyword">val</span> add_epsilon</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALadd_zeta"><span class="keyword">val</span> add_zeta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><br>
+<h3 id="3_Getters">Getters</h3><br>
+<pre><span id="VALget_alpha"><span class="keyword">val</span> get_alpha</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int</code></pre><pre><span id="VALget_beta"><span class="keyword">val</span> get_beta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float</code></pre><pre><span id="VALget_gamma"><span class="keyword">val</span> get_gamma</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> string</code></pre><pre><span id="VALget_delta"><span class="keyword">val</span> get_delta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> char</code></pre><pre><span id="VALget_epsilon"><span class="keyword">val</span> get_epsilon</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><br>
+<h3 id="3_OptionalGetters">Optional Getters</h3><br>
+<pre><span id="VALget_alpha_opt"><span class="keyword">val</span> get_alpha_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int option</code></pre><pre><span id="VALget_beta_opt"><span class="keyword">val</span> get_beta_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float option</code></pre><pre><span id="VALget_gamma_opt"><span class="keyword">val</span> get_gamma_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> string option</code></pre><pre><span id="VALget_delta_opt"><span class="keyword">val</span> get_delta_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> char option</code></pre><pre><span id="VALget_epsilon_opt"><span class="keyword">val</span> get_epsilon_opt</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool option</code></pre><br>
+<h3 id="3_GetterswithDefault">Getters with Default</h3><br>
+<pre><span id="VALget_alpha_default"><span class="keyword">val</span> get_alpha_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int -> int</code></pre><pre><span id="VALget_beta_default"><span class="keyword">val</span> get_beta_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> float</code></pre><pre><span id="VALget_gamma_default"><span class="keyword">val</span> get_gamma_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> string -> string</code></pre><pre><span id="VALget_delta_default"><span class="keyword">val</span> get_delta_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> char -> char</code></pre><pre><span id="VALget_epsilon_default"><span class="keyword">val</span> get_epsilon_default</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool -> bool</code></pre><br>
+<h3 id="3_Interrogators">Interrogators</h3><br>
+<pre><span id="VALhas_alpha"><span class="keyword">val</span> has_alpha</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_beta"><span class="keyword">val</span> has_beta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_gamma"><span class="keyword">val</span> has_gamma</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_delta"><span class="keyword">val</span> has_delta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_epsilon"><span class="keyword">val</span> has_epsilon</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><pre><span id="VALhas_zeta"><span class="keyword">val</span> has_zeta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool</code></pre><br>
+<h3 id="3_Removers">Removers</h3><br>
+<pre><span id="VALremove_alpha"><span class="keyword">val</span> remove_alpha</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_beta"><span class="keyword">val</span> remove_beta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_gamma"><span class="keyword">val</span> remove_gamma</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_delta"><span class="keyword">val</span> remove_delta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_epsilon"><span class="keyword">val</span> remove_epsilon</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALremove_zeta"><span class="keyword">val</span> remove_zeta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> <a href="Comp.html#TYPEentity">entity</a></code></pre><br>
+<h3 id="3_Updaters">Updaters</h3><br>
+<pre><span id="VALupdate_alpha"><span class="keyword">val</span> update_alpha</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> int -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_beta"><span class="keyword">val</span> update_beta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> float -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_gamma"><span class="keyword">val</span> update_gamma</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> string -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_delta"><span class="keyword">val</span> update_delta</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> char -> <a href="Comp.html#TYPEentity">entity</a></code></pre><pre><span id="VALupdate_epsilon"><span class="keyword">val</span> update_epsilon</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> bool -> <a href="Comp.html#TYPEentity">entity</a></code></pre><br>
+<h3 id="3_Debuggers">Debuggers</h3><br>
+<pre><span id="VALstring_of_component_type"><span class="keyword">val</span> string_of_component_type</span> : <code class="type"><a href="Comp.html#TYPEcomponent_type">component_type</a> -> string</code></pre><pre><span id="VALstring_of_component"><span class="keyword">val</span> string_of_component</span> : <code class="type"><a href="Comp.html#TYPEcomponent">component</a> -> string</code></pre><br>
+<h3 id="3_Printers">Printers</h3><br>
+<pre><span id="VALprint_entity"><span class="keyword">val</span> print_entity</span> : <code class="type"><a href="Comp.html#TYPEentity">entity</a> -> unit</code></pre><pre><span id="VALprint_entities"><span class="keyword">val</span> print_entities</span> : <code class="type"><a href="Comp.html#TYPEworld">world</a> -> unit</code></pre></body></html>
