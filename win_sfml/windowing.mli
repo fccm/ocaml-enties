@@ -17,8 +17,8 @@ type mouse_button =
   | Mouse_button_x of int
   | Mouse_wheel of int
 
-type window_handle
-type color
+type window_handle = SFRenderWindow.t
+type color = SFColor.t
 
 val rgb : float * float * float -> color
 val rgb_a : float * float * float -> float -> color
