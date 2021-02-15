@@ -20,3 +20,8 @@ If you don't know anything about the Entity/Component concept
 I would recommend you to have a look at the Artemis website:
 http://gamadu.com/artemis/
 
+========================================================
+
+Read the API documentation online at:
+
+https://fccm.github.io/ocaml-enties/src/doc/Ent.html
