@@ -20,7 +20,7 @@ let _ =
   Random.self_init ();
   Windowing.fold
     ~window_size
-    ~title:"Explosion Series"
+    ~title:"Sparkle Series"
     ~init
     ~display
     ~mouse
