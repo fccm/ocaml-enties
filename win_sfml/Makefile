@@ -1,6 +1,6 @@
 OCAMLC := ocamlc -g
 OCAMLOPT := ocamlopt -g
-OCAML_SFML_DIR := ../../ocaml-sfml-2.0/src/
+OCAML_SFML_DIR := ../../ocaml-sfml/src/
 OCAML_SFML_INC := -I $(OCAML_SFML_DIR)
 
 .PHONY: all

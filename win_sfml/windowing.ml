@@ -21,7 +21,8 @@ type app = {
 
 
 let elapsed_time a =
-  SFPausableClock.getElapsedTime_asSeconds a.clock
+  SFTime.asSeconds (
+    SFPausableClock.getElapsedTime a.clock)
 
 
 let render display redisplay t a u =
@@ -66,7 +67,7 @@ let key_translate = function
   | SFKey.Down  -> Down
   | SFKey.Escape -> Escape
   | k when k >= SFKey.A && k <= SFKey.Z ->
-      Char (Char.lowercase (SFKey.string_of_keyCode k).[0])
+      Char (Char.lowercase_ascii (SFKey.string_of_keyCode k).[0])
   | k -> Key (SFKey.string_of_keyCode k)
 
 
@@ -102,10 +103,10 @@ let handle_event t reshape keyboard mouse_moved mouse u = function
       let u = mouse u ~t ~id ~button ~state ~x ~y in
       (u)
 
-  | SFEvent.MouseWheelMoved (delta, x, y) ->
+  | SFEvent.MouseWheelScrolled (_, delta, x, y) ->
       let id = 0 in  (* SFML doesn't handle several mice yet *)
-      let state = if delta > 0 then Pressed else Released
-      and button = Mouse_wheel delta in
+      let state = if delta > 0.0 then Pressed else Released
+      and button = Mouse_wheel (int_of_float delta) in
       let u = mouse u ~t ~id ~button ~state ~x ~y in
       (u)
 
@@ -135,19 +136,20 @@ let fold
   *)
   let win =
     let width, height = window_size in
-    let style = [`titlebar; `close] in
+    let style = [SFStyle.Titlebar; SFStyle.Close] in
     let style =
       if reshape = None then style
-      else `resize :: style
+      else (SFStyle.Resize :: style)
     in
     let mode =
-      { SFRenderWindow.
+      { SFVideoMode.
         width;
         height;
         bitsPerPixel = 32;
       }
     and settings =
-      { SFRenderWindow.
+      { SFContextSettings.default with
+        SFContextSettings.
         depthBits = 24;
         stencilBits = 8;
         antialiasingLevel = 4;
@@ -200,7 +202,7 @@ let fold
     | None -> (fun _ -> false)
   in
 
-  let t0 = SFPausableClock.getElapsedTime_asSeconds clock in
+  let t0 = SFTime.asSeconds (SFPausableClock.getElapsedTime clock) in
 
   let a = { win; clock; prev_time = t0 } in
 
