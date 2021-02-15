@@ -83,7 +83,7 @@ let get_components e =
 let cmp_components e comp_types =
   let comp_types_in = List.sort cmp_comp comp_types in
   let comp_types_e = PMap.keys e.components in
-  Pervasives.compare comp_types_in comp_types_e
+  Stdlib.compare comp_types_in comp_types_e
 
 let components_match e comp_types =
   (cmp_components e comp_types) = 0
